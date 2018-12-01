@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+ <generatorConfiguration>
+     <!-- 数据库驱动包位置 -->
+     <classPathEntry location="E:\cdy\cdy\tools\maven\repostory\mysql\mysql-connector-java\5.1.26\mysql-connector-java-5.1.26.jar" /> 
+     <context id="mysqlTable" targetRuntime="MyBatis3">
+         <commentGenerator>
+             <property name="suppressAllComments" value="true" />
+         </commentGenerator>
+         <!-- 数据库链接URL、用户名、密码 -->
+          <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/examonline" userId="root" password="123456"> 
+         </jdbcConnection>
+         <javaTypeResolver>
+             <property name="forceBigDecimals" value="false" />
+         </javaTypeResolver>
+         <!-- 生成实体类的包名和位置，这里配置将生成的实体类放在com.examOnline.model这个包下 -->
+         <javaModelGenerator targetPackage="com.examOnline.model" targetProject="E:\cdy\cdy\workspace\examOnline\src\main\java">
+             <property name="enableSubPackages" value="true" />
+             <property name="trimStrings" value="true" />
+         </javaModelGenerator>
+         <!-- 生成的SQL映射文件包名和位置，这里配置将生成的SQL映射文件放在mapping这个包下 -->
+         <sqlMapGenerator targetPackage="mapping" targetProject="E:\cdy\cdy\workspace\examOnline\src\main\resources">
+             <property name="enableSubPackages" value="true" />
+         </sqlMapGenerator>
+         <!-- 生成DAO的包名和位置，这里配置将生成的dao类放在com.examOnline.dao这个包下 -->
+         <javaClientGenerator type="XMLMAPPER" targetPackage="com.examOnline.dao" targetProject="E:\cdy\cdy\workspace\examOnline\src\main\java">
+             <property name="enableSubPackages" value="true" />
+         </javaClientGenerator>
+          <!--生成对应表及类名-->     
+       <!-- <table schema="examonline" domainObjectName="Admin" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"  enableSelectByExample="false" selectByExampleQueryId="false" tableName="admin"></table> 
+        <table schema="examonline" domainObjectName="Question" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"  enableSelectByExample="false" selectByExampleQueryId="false" tableName="question"></table> 
+        <table schema="examonline" domainObjectName="QuestionLib" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"  enableSelectByExample="false" selectByExampleQueryId="false" tableName="question_lib"></table>
+        <table schema="examonline" domainObjectName="Practice" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"  enableSelectByExample="false" selectByExampleQueryId="false" tableName="practice"></table>  
+        <table schema="examonline" domainObjectName="Object" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"  enableSelectByExample="false" selectByExampleQueryId="false" tableName="object"></table>  -->
+        <table schema="examonline" domainObjectName="StuExamPaper" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"  enableSelectByExample="false" selectByExampleQueryId="false" tableName="stu_exam_paper"></table>
+     </context>
+</generatorConfiguration>

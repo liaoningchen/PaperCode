@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.examOnline.dao.PracticeDao" >
+  <resultMap id="BaseResultMap" type="com.examOnline.model.Practice" >
+    <id column="number" property="number" jdbcType="INTEGER" />
+    <result column="id" property="id" jdbcType="VARCHAR" />
+    <result column="queslibId" property="queslibid" jdbcType="VARCHAR" />
+    <result column="object" property="object" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="cretae_by" property="cretaeBy" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="other1" property="other1" jdbcType="VARCHAR" />
+    <result column="other2" property="other2" jdbcType="VARCHAR" />
+    <result column="other3" property="other3" jdbcType="VARCHAR" />
+    <result column="other4" property="other4" jdbcType="VARCHAR" />
+    <result column="other5" property="other5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    number, id, queslibId, object, state, cretae_by, create_time, other1, other2, other3, 
+    other4, other5
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from practice
+    where number = #{number,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from practice
+    where number = #{number,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.examOnline.model.Practice" >
+    insert into practice (number, id, queslibId, 
+      object, state, cretae_by, 
+      create_time, other1, other2, 
+      other3, other4, other5
+      )
+    values (#{number,jdbcType=INTEGER}, #{id,jdbcType=VARCHAR}, #{queslibid,jdbcType=VARCHAR}, 
+      #{object,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{cretaeBy,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{other1,jdbcType=VARCHAR}, #{other2,jdbcType=VARCHAR}, 
+      #{other3,jdbcType=VARCHAR}, #{other4,jdbcType=VARCHAR}, #{other5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.examOnline.model.Practice" >
+    insert into practice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="queslibid != null" >
+        queslibId,
+      </if>
+      <if test="object != null" >
+        object,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="cretaeBy != null" >
+        cretae_by,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="other1 != null" >
+        other1,
+      </if>
+      <if test="other2 != null" >
+        other2,
+      </if>
+      <if test="other3 != null" >
+        other3,
+      </if>
+      <if test="other4 != null" >
+        other4,
+      </if>
+      <if test="other5 != null" >
+        other5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="queslibid != null" >
+        #{queslibid,jdbcType=VARCHAR},
+      </if>
+      <if test="object != null" >
+        #{object,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="cretaeBy != null" >
+        #{cretaeBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="other1 != null" >
+        #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        #{other2,jdbcType=VARCHAR},
+      </if>
+      <if test="other3 != null" >
+        #{other3,jdbcType=VARCHAR},
+      </if>
+      <if test="other4 != null" >
+        #{other4,jdbcType=VARCHAR},
+      </if>
+      <if test="other5 != null" >
+        #{other5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.examOnline.model.Practice" >
+    update practice
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="queslibid != null" >
+        queslibId = #{queslibid,jdbcType=VARCHAR},
+      </if>
+      <if test="object != null" >
+        object = #{object,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="cretaeBy != null" >
+        cretae_by = #{cretaeBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="other1 != null" >
+        other1 = #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        other2 = #{other2,jdbcType=VARCHAR},
+      </if>
+      <if test="other3 != null" >
+        other3 = #{other3,jdbcType=VARCHAR},
+      </if>
+      <if test="other4 != null" >
+        other4 = #{other4,jdbcType=VARCHAR},
+      </if>
+      <if test="other5 != null" >
+        other5 = #{other5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where number = #{number,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.examOnline.model.Practice" >
+    update practice
+    set id = #{id,jdbcType=VARCHAR},
+      queslibId = #{queslibid,jdbcType=VARCHAR},
+      object = #{object,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      cretae_by = #{cretaeBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      other1 = #{other1,jdbcType=VARCHAR},
+      other2 = #{other2,jdbcType=VARCHAR},
+      other3 = #{other3,jdbcType=VARCHAR},
+      other4 = #{other4,jdbcType=VARCHAR},
+      other5 = #{other5,jdbcType=VARCHAR}
+    where number = #{number,jdbcType=INTEGER}
+  </update>
+  <select id="selectByNumAndObj" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from practice
+    where number = #{0} and object = #{1} and state='1'
+  </select>
+  <select id="getCount" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select 
+    count(*)
+    from practice
+    where object = #{object,jdbcType=INTEGER}
+  </select>
+</mapper>

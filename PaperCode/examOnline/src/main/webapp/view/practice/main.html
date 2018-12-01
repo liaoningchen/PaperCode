@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>学生在线考试系统</title>
+<link rel="stylesheet" href="../../scripts/bootstrap/css/bootstrap.css" />
+<style type="text/css">
+	body{
+		width:100%;
+        
+		background-color: #86B4CC;
+	}
+	.container{
+		width: 85%;
+		height: 500px;
+		margin: 30px auto;
+		
+	}
+    dt{
+        height: 45px;
+        line-height: 45px;
+        border-bottom: solid 1px #e6e6e6;
+        background-color: #faf9f7;
+        text-align: center;
+        color: #a0a0a0;
+        font-size: 18px;
+    } 
+    dd{
+        margin: 12px 0 0 20px;
+        clear: both;
+        
+    }
+    .ks-left-menu a {
+        display: inline-block;
+        height: 56px;
+        width: 80%;
+        line-height: 56px;
+        text-align: center;
+        border: solid 1px #e6e6e6;
+        border-radius: 5px;
+        color: #a0a0a0;
+        margin-left: 8%;
+        font-size: 16px;
+    }
+    .ks-left-menu a:hover {
+        text-decoration: none;
+        background-color: #56b04b;
+        color: #fff!important;
+    }
+    .active{
+        text-decoration: none;
+        background-color: #56b04b;
+        color: #fff!important;
+    }
+    .ks-left-menu a:active {
+        text-decoration: none;
+        background-color: #56b04b;
+        color: #fff!important;
+    }
+	 .left{
+		width: 20%;
+		height: 100%;
+		background-color: #f5f5f5;
+		float: left;
+		border:1px solid #ccc;
+	}
+	.right{
+		width: 78%;
+		height: 100%;
+		background-color: #f5f5f5;
+		float: right;
+		border:1px solid #ccc;
+        padding-top: 50px;
+	} 
+    .clear {
+        clear: both;
+        display: block;
+        overflow: hidden;
+    }
+    .ks-right-main-links {
+        width: 810px;
+        margin: 0 auto;
+        font-size: 16px;
+    }
+    .ks-right-main-links .item {
+        float: left;
+        width: 270px;
+    }
+    .ks-right-main-links .item-logo {
+        width: 228px;
+        height: 120px;
+        background-color: #fff;
+        padding: 2px;
+        border-radius: 5px;
+        margin: 0 auto;
+    }
+    .ks-right-main-links .item-txt {
+        height: 74px;
+        text-align: center;
+        line-height: 58px;
+    }
+    .ks-right-main-links .item-logo .fill-color {
+        width: 228px;
+        height: 120px;
+        padding-top: 16px;
+        overflow: hidden;
+        display: inline-block;
+        position: relative;
+    }
+    .fill-color .lg {
+        width: 88px;
+        height: 88px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 50%;
+        /* position: absolute;
+        top: 16px;
+        left: 32px; */
+    }
+    .fill-yellow {
+        background-color: #fcc056;
+    }
+    .fill-yellow .lg{
+        background: url(../../images/sort40.png);
+        background-size: 100% 100%;
+    }
+    .fill-orange{
+        background-color:#fe7e4c
+    }
+    .fill-orange .lg{
+        background: url(../../images/random.png);
+        background-size: 100% 100%;
+    }
+    .fill-blue{
+        background-color:#6cceec
+    }
+    .fill-blue .lg{
+        background: url(../../images/right39.png);
+        background-size: 100% 100%;
+    }
+    .fill-rose{
+        background-color:#fd6467
+    }
+    .fill-rose .lg{
+        background: url(../../images/right39.png);
+        background-size: 100% 100%;
+    }
+    .fill-pink{
+        background-color:#f76f93
+    }
+    .fill-pink .lg{
+        background: url(../../images/clock118.png);
+        background-size: 100% 100%;
+    }
+    .fill-green{
+        background-color:#67e1c6
+    }
+    .fill-green .lg{
+        background: url(../../images/cloud156.png);
+        background-size: 100% 100%;
+    }
+    .item-txt a {
+        color: #8c8c8c;
+    }
+</style>
+</head>
+<body>
+ <div class="container">         
+    <ol class="breadcrumb" style="margin-bottom:5px">
+        <li><a href="../main.html">首页</a></li>
+        <li><a href="main.html">练习</a></li>
+        <li id="now"></li>
+    </ol>
+<div class="left">
+    <dl class="ks-left-menu clear" id="left_menus">
+        <dt>题型选择</dt>
+        <!-- <dd class="menu-xc"><a href="">小车</a></dd>
+        <dd class="menu-hc"><a href="" class="on">货车</a></dd>
+        <dd class="menu-kc"><a href="">客车</a></dd>
+        <dd class="menu-mtc"><a href="">摩托车</a></dd>
+        <dd class="menu-zgz"><a href="">从业资格证</a></dd>
+        <dd class="menu-hf"><a href="">恢复资格考试</a></dd> -->
+    </dl>
+</div>
+<div class="right">
+     <div class="ks-right-main-links clear">
+            <div class="item">
+                <div class="item-logo">
+                    <a class="fill-color fill-yellow" href="">
+                        <div class="lg"></div>
+                    </a>
+                </div>
+                <div class="item-txt">
+                    <a href="">顺序练习</a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-logo">
+                    <a class="fill-color fill-orange" href="">
+                        <div class="lg"></div>
+                    </a>
+                </div>
+                <div class="item-txt">
+                    <a href="">随机练习</a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-logo">
+                    <a class="fill-color fill-blue" href="">
+                        <div class="lg"></div>
+                    </a>
+                </div>
+                <div class="item-txt">
+                    <a href="">章节练习</a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-logo">
+                    <a class="fill-color fill-rose" href="">
+                        <div class="lg"></div>
+                    </a>
+                </div>
+                <div class="item-txt">
+                    <a href="">专项练习</a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-logo">
+                    <a class="fill-color fill-pink" href="">
+                        <div class="lg"></div>
+                    </a>
+                </div>
+                <div class="item-txt">
+                    <a href="">模拟考试</a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-logo">
+                    <a class="fill-color fill-green" href="">
+                        <div class="lg"></div>
+                    </a>
+                </div>
+                <div class="item-txt">
+                    <a href="">错题练习</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+
+
+    <script type="text/javascript" src="../../scripts/jquery.js"></script>
+    <script type="text/javascript" src='../../scripts/base.js'></script>
+    <script type="text/javascript" src="../../scripts/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $.post(baseUrl + LEFTBAR,  function(data, textStatus, xhr) {
+                $("#left_menus").empty();
+                console.log(data)
+                var str ='<dt>科目选择</dt>';
+                $.each(data, function(index, val) {
+                    str += '<dd class="menu-xc" ><a id="aa" data="'+val.objcode+'" href="">'+val.objname+'</a></dd>'
+                    //把科目code值存储到localstorage中，默认存储第一个值
+                    localStorage.setItem('objOode',data[0].objcode);
+                });
+                $("#left_menus").append(str)
+                
+            });
+         $("#left_menus").on('click', '#aa', function(event) {
+             event.preventDefault();
+             localStorage.setItem('objCode',$(this).attr('data'));
+             $("#left_menus #aa").removeClass('active');
+             $(this).addClass('active');
+         }); 
+         $(".item").click(function(e) {
+        	 e.preventDefault();//阻止事件默认行为
+            var value = $(this).find('.item-txt').children().html();
+            $("#now").html(value);
+            var objCode = localStorage.getItem("objCode");
+            window.location.href=encodeURI('lianxi.html?objCode='+objCode+'&type='+value);
+            
+         });  
+
+        });
+    </script>
+</body>
+</html>
