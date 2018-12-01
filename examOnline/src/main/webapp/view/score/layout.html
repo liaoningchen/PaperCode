@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>学生在线考试系统</title>
+</head>
+
+<frameset cols="260,*" frameborder="no" framespacing="0">
+	<frame src="nav.html">
+	<frameset rows="180,*" frameborder="no" framespacing="0" id='par'>
+		<frame src="top.html">
+		<frame src="paper.html" name="content">
+	</frameset>
+	<!-- <frame src="main.html" name="content"> -->
+</frameset>
+<script type="text/javascript">
+	function display(row){
+		$.alert({
+            title: '提示',
+            content: row.detail,
+            type:'green',             //一般危险操作用red,保存成功操作green
+            buttons: {              //定义按钮
+                confirm: {
+                    text: '确认',
+                    btnClass: 'btn-primary',
+                    action: function(){ //这里写点击按钮回调函数
+                    }
+                }
+            }
+		});
+	}
+</script>
+</html>

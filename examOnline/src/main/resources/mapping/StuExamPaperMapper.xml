@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.examOnline.dao.StuExamPaperDao" >
+  <resultMap id="BaseResultMap" type="com.examOnline.model.StuExamPaper" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="parcId" property="parcid" jdbcType="VARCHAR" />
+    <result column="stuAnswer" property="stuanswer" jdbcType="VARCHAR" />
+    <result column="object" property="object" jdbcType="VARCHAR" />
+    <result column="other1" property="other1" jdbcType="VARCHAR" />
+    <result column="other2" property="other2" jdbcType="VARCHAR" />
+    <result column="other3" property="other3" jdbcType="VARCHAR" />
+    <result column="other4" property="other4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, parcId, stuAnswer, object, other1, other2, other3, other4
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from stu_exam_paper
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from stu_exam_paper
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.examOnline.model.StuExamPaper" >
+    insert into stu_exam_paper (id, parcId, stuAnswer, 
+      object, other1, other2, 
+      other3, other4)
+    values (#{id,jdbcType=VARCHAR}, #{parcid,jdbcType=VARCHAR}, #{stuanswer,jdbcType=VARCHAR}, 
+      #{object,jdbcType=VARCHAR}, #{other1,jdbcType=VARCHAR}, #{other2,jdbcType=VARCHAR}, 
+      #{other3,jdbcType=VARCHAR}, #{other4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.examOnline.model.StuExamPaper" >
+    insert into stu_exam_paper
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="parcid != null" >
+        parcId,
+      </if>
+      <if test="stuanswer != null" >
+        stuAnswer,
+      </if>
+      <if test="object != null" >
+        object,
+      </if>
+      <if test="other1 != null" >
+        other1,
+      </if>
+      <if test="other2 != null" >
+        other2,
+      </if>
+      <if test="other3 != null" >
+        other3,
+      </if>
+      <if test="other4 != null" >
+        other4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="parcid != null" >
+        #{parcid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuanswer != null" >
+        #{stuanswer,jdbcType=VARCHAR},
+      </if>
+      <if test="object != null" >
+        #{object,jdbcType=VARCHAR},
+      </if>
+      <if test="other1 != null" >
+        #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        #{other2,jdbcType=VARCHAR},
+      </if>
+      <if test="other3 != null" >
+        #{other3,jdbcType=VARCHAR},
+      </if>
+      <if test="other4 != null" >
+        #{other4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.examOnline.model.StuExamPaper" >
+    update stu_exam_paper
+    <set >
+      <if test="parcid != null" >
+        parcId = #{parcid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuanswer != null" >
+        stuAnswer = #{stuanswer,jdbcType=VARCHAR},
+      </if>
+      <if test="object != null" >
+        object = #{object,jdbcType=VARCHAR},
+      </if>
+      <if test="other1 != null" >
+        other1 = #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        other2 = #{other2,jdbcType=VARCHAR},
+      </if>
+      <if test="other3 != null" >
+        other3 = #{other3,jdbcType=VARCHAR},
+      </if>
+      <if test="other4 != null" >
+        other4 = #{other4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.examOnline.model.StuExamPaper" >
+    update stu_exam_paper
+    set parcId = #{parcid,jdbcType=VARCHAR},
+      stuAnswer = #{stuanswer,jdbcType=VARCHAR},
+      object = #{object,jdbcType=VARCHAR},
+      other1 = #{other1,jdbcType=VARCHAR},
+      other2 = #{other2,jdbcType=VARCHAR},
+      other3 = #{other3,jdbcType=VARCHAR},
+      other4 = #{other4,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByCodeAndObj" resultMap="BaseResultMap"  parameterType="java.lang.String">
+    select 
+    *
+    from stu_exam_paper
+     where other1 = #{0} and object = #{1}
+  </select>
+ <select id="selectPaper" resultMap="BaseResultMap"  parameterType="com.examOnline.common.Page">
+    select 
+    <include refid="Base_Column_List" />
+    from stu_exam_paper
+     <where>  
+        other1 = #{other1,jdbcType=VARCHAR}
+        and other2 = '1'
+        <if test="searchText!= null and searchText!= '' ">  
+            AND object like CONCAT('%', #{searchText}, '%')
+        </if>  
+        <if test="orderBy!=null">  
+            ORDER BY other3 ${orderType}
+        </if>  
+    </where>
+    limit #{pageNo},#{pageSize} 
+  </select>
+  <select id="getCount" resultType="java.lang.Integer"  parameterType="java.lang.String">
+    select 
+    count(*)
+    from stu_exam_paper
+     where other2 = '1' and other1 =  #{other1,jdbcType=VARCHAR}
+  </select>
+</mapper>

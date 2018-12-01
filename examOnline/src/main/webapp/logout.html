@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>学生在线考试系统</title>
+<!-- 弹出层 -->
+<link rel="stylesheet" href="scripts/bootstrap/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="scripts/bootstrap3.3/jquery-confirm/css/jquery-confirm.css">
+
+</head>
+<body>
+
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<!-- 弹出层 -->
+<script src="scripts/bootstrap3.3/jquery-confirm/js/jquery-confirm.js"></script>
+	<script type="text/javascript">
+		$.alert({
+	        title: '提示',
+	        content: "session超时，请重新登录",
+	        type:'red',             //一般危险操作用red,保存成功操作green
+	        buttons: {              //定义按钮
+	            confirm: {
+	                text: '重新登录',
+	                btnClass: 'btn-primary',
+	                action: function(){ //这里写点击按钮回调函数
+	                	//最外层框架跳转到登录页
+	            		window.top.location.href = 'Login.html';
+	                }
+	            }
+	        }
+		});
+		
+	</script>
+</body>
+</html>

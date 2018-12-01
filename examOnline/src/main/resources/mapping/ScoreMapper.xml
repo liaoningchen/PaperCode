@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.examOnline.dao.ScoreDao" >
+  <resultMap id="BaseResultMap" type="com.examOnline.model.Score" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="stuId" property="stuid" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="REAL" />
+    <result column="quesId" property="quesid" jdbcType="VARCHAR" />
+    <result column="object" property="object" jdbcType="VARCHAR" />
+    <result column="collage" property="collage" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+    <result column="class1" property="class1" jdbcType="VARCHAR" />
+    <result column="ranking" property="ranking" jdbcType="VARCHAR" />
+    <result column="crete_time" property="creteTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, stuId, score, quesId, object, collage, major, class1, ranking, crete_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from score
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from score
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.examOnline.model.Score" >
+    insert into score (id, stuId, score, 
+      quesId, object, collage, 
+      major, class1, ranking, 
+      crete_time)
+    values (#{id,jdbcType=VARCHAR}, #{stuid,jdbcType=VARCHAR}, #{score,jdbcType=REAL}, 
+      #{quesid,jdbcType=VARCHAR}, #{object,jdbcType=VARCHAR}, #{collage,jdbcType=VARCHAR}, 
+      #{major,jdbcType=VARCHAR}, #{class1,jdbcType=VARCHAR}, #{ranking,jdbcType=VARCHAR}, 
+      #{creteTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.examOnline.model.Score" >
+    insert into score
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="stuid != null" >
+        stuId,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="quesid != null" >
+        quesId,
+      </if>
+      <if test="object != null" >
+        object,
+      </if>
+      <if test="collage != null" >
+        collage,
+      </if>
+      <if test="major != null" >
+        major,
+      </if>
+      <if test="class1 != null" >
+        class1,
+      </if>
+      <if test="ranking != null" >
+        ranking,
+      </if>
+      <if test="creteTime != null" >
+        crete_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="stuid != null" >
+        #{stuid,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=REAL},
+      </if>
+      <if test="quesid != null" >
+        #{quesid,jdbcType=VARCHAR},
+      </if>
+      <if test="object != null" >
+        #{object,jdbcType=VARCHAR},
+      </if>
+      <if test="collage != null" >
+        #{collage,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="class1 != null" >
+        #{class1,jdbcType=VARCHAR},
+      </if>
+      <if test="ranking != null" >
+        #{ranking,jdbcType=VARCHAR},
+      </if>
+      <if test="creteTime != null" >
+        #{creteTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.examOnline.model.Score" >
+    update score
+    <set >
+      <if test="stuid != null" >
+        stuId = #{stuid,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=REAL},
+      </if>
+      <if test="quesid != null" >
+        quesId = #{quesid,jdbcType=VARCHAR},
+      </if>
+      <if test="object != null" >
+        object = #{object,jdbcType=VARCHAR},
+      </if>
+      <if test="collage != null" >
+        collage = #{collage,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="class1 != null" >
+        class1 = #{class1,jdbcType=VARCHAR},
+      </if>
+      <if test="ranking != null" >
+        ranking = #{ranking,jdbcType=VARCHAR},
+      </if>
+      <if test="creteTime != null" >
+        crete_time = #{creteTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.examOnline.model.Score" >
+    update score
+    set stuId = #{stuid,jdbcType=VARCHAR},
+      score = #{score,jdbcType=REAL},
+      quesId = #{quesid,jdbcType=VARCHAR},
+      object = #{object,jdbcType=VARCHAR},
+      collage = #{collage,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      class1 = #{class1,jdbcType=VARCHAR},
+      ranking = #{ranking,jdbcType=VARCHAR},
+      crete_time = #{creteTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <delete id="deleteByCodeAndObj" parameterType="java.lang.String" >
+    delete from score
+    where stuId = #{0} and object = #{1}
+  </delete>
+  <select id="selectClass" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from score
+    group by class1
+  </select>
+  <select id="selectByClass" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from score
+    where class1 = #{class1,jdbcType=VARCHAR}
+  </select>
+  <select id="getCount" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select 
+    count(*)
+    from score
+    
+  </select>
+  <select id="getScoreList" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from score
+     where
+     1=1
+     <choose>
+          <when test="searchText!= null and searchText!= '' ">  
+            AND stuId like CONCAT('%', #{searchText}, '%')
+        </when>
+     </choose>
+     <choose>
+         <when  test="orderBy != null and orderBy!= ''">  
+           <choose>
+		         <when  test="orderBy == 'creteTime'">  
+		            ORDER BY crete_time ${orderType}
+		         </when > 
+		         <otherwise>
+		            ORDER BY ${orderBy} ${orderType}
+		        </otherwise>
+		    </choose>
+         </when > 
+    </choose>
+     
+    limit #{pageNo},#{pageSize} 
+  </select>
+</mapper>
